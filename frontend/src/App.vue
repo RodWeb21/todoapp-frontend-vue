@@ -33,6 +33,14 @@ const updateTodo = async (todo) => {
   }
 }
 
+const deleteTodo = async (id) => {
+  try {
+    await axios.delete(`http://localhost:8000/api/todos/${id}/`)
+    todos.value = todos.value.filter((todo) => todo.id !== id)
+  } catch (err) {
+    console.error('Error al eliminar tarea:', err)
+  }
+}
 </script>
 
 <template>
