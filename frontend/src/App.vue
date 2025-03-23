@@ -21,6 +21,18 @@ const fetchTodos = async () => {
 onMounted(() => {
   fetchTodos()
 })
+
+const updateTodo = async (todo) => {
+  try {
+    await axios.put(`http://localhost:8000/api/todos/${todo.id}/`, {
+      title: todo.title,
+      completed: todo.completed,
+    })
+  } catch (err) {
+    console.error('Error al actualizar tarea:', err)
+  }
+}
+
 </script>
 
 <template>
